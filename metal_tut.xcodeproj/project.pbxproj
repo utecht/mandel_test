@@ -11,6 +11,8 @@
 		7CE62127212B43A0007B6607 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE62126212B43A0007B6607 /* ViewController.swift */; };
 		7CE62129212B43A0007B6607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE62128212B43A0007B6607 /* Assets.xcassets */; };
 		7CE6212C212B43A0007B6607 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE6212A212B43A0007B6607 /* Main.storyboard */; };
+		7CE62135212B4604007B6607 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE62134212B4604007B6607 /* Renderer.swift */; };
+		7CE6213E212B497C007B6607 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6213D212B497C007B6607 /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,10 @@
 		7CE6212B212B43A0007B6607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CE6212D212B43A1007B6607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CE6212E212B43A1007B6607 /* metal_tut.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = metal_tut.entitlements; sourceTree = "<group>"; };
+		7CE62134212B4604007B6607 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		7CE6213B212B4922007B6607 /* metal_tut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "metal_tut-Bridging-Header.h"; sourceTree = "<group>"; };
+		7CE6213C212B4940007B6607 /* ShaderDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderDefinitions.h; sourceTree = "<group>"; };
+		7CE6213D212B497C007B6607 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +61,14 @@
 			children = (
 				7CE62124212B43A0007B6607 /* AppDelegate.swift */,
 				7CE62126212B43A0007B6607 /* ViewController.swift */,
+				7CE62134212B4604007B6607 /* Renderer.swift */,
 				7CE62128212B43A0007B6607 /* Assets.xcassets */,
 				7CE6212A212B43A0007B6607 /* Main.storyboard */,
 				7CE6212D212B43A1007B6607 /* Info.plist */,
 				7CE6212E212B43A1007B6607 /* metal_tut.entitlements */,
+				7CE6213B212B4922007B6607 /* metal_tut-Bridging-Header.h */,
+				7CE6213C212B4940007B6607 /* ShaderDefinitions.h */,
+				7CE6213D212B497C007B6607 /* Shaders.metal */,
 			);
 			path = metal_tut;
 			sourceTree = "<group>";
@@ -95,6 +105,7 @@
 				TargetAttributes = {
 					7CE62120212B43A0007B6607 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -133,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CE6213E212B497C007B6607 /* Shaders.metal in Sources */,
 				7CE62127212B43A0007B6607 /* ViewController.swift in Sources */,
+				7CE62135212B4604007B6607 /* Renderer.swift in Sources */,
 				7CE62125212B43A0007B6607 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +282,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = metal_tut/metal_tut.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -280,6 +294,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "josephutecht.metal-tut";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "metal_tut/metal_tut-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -288,6 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = metal_tut/metal_tut.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -299,6 +316,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "josephutecht.metal-tut";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "metal_tut/metal_tut-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
