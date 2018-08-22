@@ -18,7 +18,8 @@ class Renderer: NSObject, MTKViewDelegate {
     let paletteBuffer: MTLBuffer
     var origin: float2 = [-2.5, -1.0]
     var scale: float2 = [3.5, 2.0]
-
+    var rotation = 0
+    var should_rotate = true
     
     init?(mtkView: MTKView){
         device = mtkView.device!
@@ -72,13 +73,17 @@ class Renderer: NSObject, MTKViewDelegate {
     }
     
     func zoom(center: float2, speed: Float){
+        let old_scale_x = scale[0]
+        let old_scale_y = scale[1]
         scale[0] *= (1 - speed)
         scale[1] *= (1 - speed)
+        origin[0] -= (scale[0] - old_scale_x) * center[0]
+        origin[1] -= (scale[1] - old_scale_y) * center[1]
     }
     
     func pan(pan_x: CGFloat, pan_y: CGFloat){
-        origin[0] *= Float(1 - (pan_x / 100))
-        origin[1] *= Float(1 - (pan_y / 100))
+        origin[0] += Float(pan_x / 100) * scale[0]
+        origin[1] += Float(pan_y / 100) * scale[1]
     }
     
     func draw(in view: MTKView){
@@ -92,6 +97,10 @@ class Renderer: NSObject, MTKViewDelegate {
         let window_size = [Float(view.drawableSize.width), Float(view.drawableSize.height)]
         renderEncoder.setFragmentBytes(window_size, length: window_size.count * MemoryLayout<Float>.stride, index: 1)
         renderEncoder.setFragmentBytes([scale, origin], length: 2 * MemoryLayout<float2>.stride, index: 2)
+        if should_rotate {
+            rotation = (rotation + 1) % 1000
+        }
+        renderEncoder.setFragmentBytes([rotation], length: MemoryLayout<int4>.stride, index: 3)
         renderEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
         renderEncoder.endEncoding()
         commandBuffer.present(view.currentDrawable!)

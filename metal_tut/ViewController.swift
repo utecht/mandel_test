@@ -38,9 +38,9 @@ class ViewController: NSViewController {
     }
     
     override func magnify(with event: NSEvent) {
-        let x = Float(event.locationInWindow.x) / Float(mtkView.drawableSize.width)
-        let y = Float(event.locationInWindow.y) / Float(mtkView.drawableSize.height)
-        renderer.zoom(center: [x, y], speed: Float(event.magnification))
+        let x = Float(event.locationInWindow.x * 2) / Float(mtkView.drawableSize.width)
+        let y = Float(event.locationInWindow.y * 2) / Float(mtkView.drawableSize.height)
+        renderer.zoom(center: [x, 1 - y], speed: Float(event.magnification))
     }
     
     override func scrollWheel(with event: NSEvent) {
