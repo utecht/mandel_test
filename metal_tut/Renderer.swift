@@ -110,12 +110,12 @@ class Renderer: NSObject, MTKViewDelegate {
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize){
 
     }
-    
+
     class func buildRenderPipelineWith(device: MTLDevice, metalKitView: MTKView) throws -> MTLRenderPipelineState {
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
         let library = device.makeDefaultLibrary()
         pipelineDescriptor.vertexFunction = library?.makeFunction(name: "vertexShader")
-        pipelineDescriptor.fragmentFunction = library?.makeFunction(name: "fragmentShader")
+        pipelineDescriptor.fragmentFunction = library?.makeFunction(name: "mandelbrotSet")
         pipelineDescriptor.colorAttachments[0].pixelFormat = metalKitView.colorPixelFormat
         return try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
     }

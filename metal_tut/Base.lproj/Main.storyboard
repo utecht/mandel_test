@@ -59,8 +59,10 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Visualization" id="oEc-CE-bf8">
                                     <items>
-                                        <menuItem title="Item" id="XIV-zF-W1v">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="Rotate Palette" state="on" keyEquivalent="r" id="XIV-zF-W1v">
+                                            <connections>
+                                                <action selector="toggle_rotation:" target="Ady-hI-5gd" id="Cci-BV-UO3"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
@@ -75,7 +77,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="68" y="-48"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">

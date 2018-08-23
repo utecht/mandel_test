@@ -13,7 +13,7 @@ import MetalKit
 class ViewController: NSViewController {
     var mtkView: MTKView!
     var renderer: Renderer!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let mtkViewTemp = self.view as? MTKView else {
@@ -46,12 +46,12 @@ class ViewController: NSViewController {
     override func scrollWheel(with event: NSEvent) {
         renderer.pan(pan_x: event.deltaX, pan_y: event.deltaY)
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+    
+    @IBAction func toggle_rotation(_ sender: NSMenuItem) {
+        renderer.should_rotate = !renderer.should_rotate
+        sender.isEnabled = renderer.should_rotate
     }
+    
 }
 
 

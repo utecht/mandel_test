@@ -59,8 +59,9 @@
 		7CE62123212B43A0007B6607 /* metal_tut */ = {
 			isa = PBXGroup;
 			children = (
-				7CE62124212B43A0007B6607 /* AppDelegate.swift */,
 				7CE62126212B43A0007B6607 /* ViewController.swift */,
+				7CE62124212B43A0007B6607 /* AppDelegate.swift */,
+				7CE6213D212B497C007B6607 /* Shaders.metal */,
 				7CE62134212B4604007B6607 /* Renderer.swift */,
 				7CE62128212B43A0007B6607 /* Assets.xcassets */,
 				7CE6212A212B43A0007B6607 /* Main.storyboard */,
@@ -68,7 +69,6 @@
 				7CE6212E212B43A1007B6607 /* metal_tut.entitlements */,
 				7CE6213B212B4922007B6607 /* metal_tut-Bridging-Header.h */,
 				7CE6213C212B4940007B6607 /* ShaderDefinitions.h */,
-				7CE6213D212B497C007B6607 /* Shaders.metal */,
 			);
 			path = metal_tut;
 			sourceTree = "<group>";
